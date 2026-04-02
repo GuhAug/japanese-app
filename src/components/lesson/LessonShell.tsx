@@ -253,6 +253,7 @@ function ExerciseView({ exercise, isTest, showFeedback, userAnswer, isCorrect, e
         )}
         {exercise.type === "typing" && (
           <TypingExercise
+            key={exercise.id}
             prompt={exercise.prompt}
             correct={exercise.answer}
             onAnswer={checkAnswer}

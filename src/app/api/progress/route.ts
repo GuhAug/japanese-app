@@ -122,7 +122,11 @@ export async function POST(req: NextRequest) {
 
   async function awardBadge(badgeId: string) {
     if (!earnedBadgeIds.includes(badgeId)) {
-      await prisma.userBadge.create({ data: { userId, badgeId } });
+      await prisma.userBadge.upsert({
+        where: { userId_badgeId: { userId, badgeId } },
+        create: { userId, badgeId },
+        update: {},
+      });
       newBadges.push(badgeId);
     }
   }

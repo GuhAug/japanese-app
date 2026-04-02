@@ -96,7 +96,10 @@ export function LessonShell({ lesson }: { lesson: Lesson }) {
   async function submitTest(answers: Record<string, string>, correctMap: Record<string, boolean>) {
     setSubmitting(true);
     const totalQ = state.testExercises.length;
-    const correctCount = Object.values(correctMap).filter(Boolean).length;
+    const testIds = new Set(state.testExercises.map((e) => e.id));
+    const correctCount = Object.entries(correctMap)
+      .filter(([id]) => testIds.has(id))
+      .filter(([, v]) => v).length;
     const score = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 100;
     try {
       const res = await fetch("/api/progress", {
@@ -104,6 +107,7 @@ export function LessonShell({ lesson }: { lesson: Lesson }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lessonId: lesson.id, score }),
       });
+      if (!res.ok) throw new Error(`API error ${res.status}`);
       const data = await res.json();
       dispatch({ type: "SUBMIT_TEST", payload: { score, xpEarned: data.xpEarned ?? 20 } });
     } catch {

@@ -1,0 +1,110 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               String    @id @default(cuid())
+  email            String    @unique
+  passwordHash     String
+  name             String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  xp               Int       @default(0)
+  level            Int       @default(1)
+  streakDays       Int       @default(0)
+  lastActivityDate String?   // YYYY-MM-DD
+  longestStreak    Int       @default(0)
+
+  lessonProgress LessonProgress[]
+  moduleProgress ModuleProgress[]
+  srsItems       SRSItem[]
+  badges         UserBadge[]
+  activityLog    ActivityLog[]
+  examAttempts   ExamAttempt[]
+
+  @@map("users")
+}
+
+model LessonProgress {
+  id          String    @id @default(cuid())
+  userId      String
+  lessonId    String
+  status      String    @default("locked") // locked | available | completed
+  score       Int?
+  completedAt DateTime?
+  attempts    Int       @default(0)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@map("lesson_progress")
+}
+
+model ModuleProgress {
+  id         String  @id @default(cuid())
+  userId     String
+  moduleId   String
+  status     String  @default("locked") // locked | available | completed
+  examPassed Boolean @default(false)
+  examScore  Int?
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, moduleId])
+  @@map("module_progress")
+}
+
+model SRSItem {
+  id           String    @id @default(cuid())
+  userId       String
+  itemId       String
+  itemType     String    // hiragana | katakana | vocab
+  easeFactor   Float     @default(2.5)
+  interval     Int       @default(1)
+  repetitions  Int       @default(0)
+  dueDate      DateTime  @default(now())
+  lastReviewed DateTime?
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemId])
+  @@map("srs_items")
+}
+
+model UserBadge {
+  id       String   @id @default(cuid())
+  userId   String
+  badgeId  String
+  earnedAt DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+  @@map("user_badges")
+}
+
+model ActivityLog {
+  id       String @id @default(cuid())
+  userId   String
+  date     String // YYYY-MM-DD
+  xpEarned Int    @default(0)
+  lessons  Int    @default(0)
+  reviews  Int    @default(0)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+  @@map("activity_log")
+}
+
+model ExamAttempt {
+  id          String   @id @default(cuid())
+  userId      String
+  moduleId    String
+  score       Int
+  passed      Boolean
+  attemptedAt DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("exam_attempts")
+}

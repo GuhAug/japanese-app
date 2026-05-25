@@ -2,13 +2,21 @@ import { Block } from "@/types/curriculum";
 import { hiraganaModule1, hiraganaModule2 } from "./block1-hiragana";
 import { katakanaModule } from "./block1-katakana";
 import { phrasesModule } from "./block1-phrases";
+import { koreanVowelsModule, koreanConsonantsModule } from "./block2-korean-hangul";
+import { koreanPhrasesModule } from "./block2-korean-phrases";
 
 export const CURRICULUM: Block[] = [
   {
     id: "b1",
-    title: "Bloco 1 — Fundamentos (Kana)",
+    title: "Bloco 1 — Japonês: Fundamentos (Kana)",
     description: "Hiragana completo, Katakana completo, pronúncia e primeiras frases",
     modules: [hiraganaModule1, hiraganaModule2, katakanaModule, phrasesModule],
+  },
+  {
+    id: "b2",
+    title: "Bloco 2 — Coreano: Fundamentos (Hangul)",
+    description: "Vogais e consoantes do Hangul, blocos silábicos e primeiras frases",
+    modules: [koreanVowelsModule, koreanConsonantsModule, koreanPhrasesModule],
   },
 ];
 

@@ -77,6 +77,27 @@ export const BADGES: Badge[] = [
     icon: "🏆",
     condition: "level >= 10",
   },
+  {
+    id: "hangul-hero",
+    name: "Herói do Hangul",
+    description: "Complete os módulos de Vogais e Consoantes do Hangul",
+    icon: "한",
+    condition: "Complete b2-m1 e b2-m2",
+  },
+  {
+    id: "block2-graduate",
+    name: "Graduado do Bloco 2",
+    description: "Passe em todas as provas do Bloco 2 (Coreano)",
+    icon: "🇰🇷",
+    condition: "3 provas de módulo aprovadas no Bloco 2",
+  },
+  {
+    id: "polyglot",
+    name: "Poliglota Iniciante",
+    description: "Complete pelo menos uma lição em japonês e uma em coreano",
+    icon: "🌏",
+    condition: "1+ lição completada em cada idioma",
+  },
 ];
 
 export function getBadgeById(id: string): Badge | undefined {

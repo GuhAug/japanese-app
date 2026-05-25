@@ -21,11 +21,22 @@ export default async function TrilhaPage() {
   return (
     <div className="max-w-2xl mx-auto p-6 animate-fade-in">
       <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Trilha de Aprendizado</h1>
-      <p className="text-muted text-sm mb-8">Seu caminho do zero ao japonês intermediário</p>
+      <p className="text-muted text-sm mb-8">Seu caminho do zero ao nível intermediário — japonês e coreano</p>
 
-      {CURRICULUM.map((block) => (
+      {CURRICULUM.map((block) => {
+        const isKorean = block.id === "b2";
+        const blockBorder = isKorean ? "border-rose-500" : "border-indigo-500";
+        const accentBg = isKorean ? "bg-rose-600 border-rose-600" : "bg-indigo-600 border-indigo-600";
+        const accentRing = isKorean
+          ? "border-rose-500 text-rose-600 dark:text-rose-400 animate-pulse-glow"
+          : "border-indigo-500 text-indigo-600 dark:text-indigo-400 animate-pulse-glow";
+        const accentLine = isKorean ? "bg-rose-400" : "bg-indigo-400";
+        const examBtn = isKorean
+          ? "bg-rose-600 hover:bg-rose-500 text-white"
+          : "bg-indigo-600 hover:bg-indigo-500 text-white";
+        return (
         <div key={block.id} className="mb-10">
-          <div className="card-bg rounded-2xl p-4 mb-6 border-l-4 border-indigo-500">
+          <div className={cn("card-bg rounded-2xl p-4 mb-6 border-l-4", blockBorder)}>
             <h2 className="font-bold text-slate-900 dark:text-white text-lg">{block.title}</h2>
             <p className="text-sm text-muted">{block.description}</p>
           </div>
@@ -57,7 +68,7 @@ export default async function TrilhaPage() {
                         "text-xs font-medium px-3 py-1.5 rounded-lg transition-colors",
                         mp?.examPassed
                           ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
-                          : "bg-indigo-600 hover:bg-indigo-500 text-white"
+                          : examBtn
                       )}
                     >
                       {mp?.examPassed ? `✓ Prova: ${mp.examScore}%` : "Fazer prova →"}
@@ -77,14 +88,14 @@ export default async function TrilhaPage() {
                         <div className="flex flex-col items-center">
                           <div className={cn(
                             "w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold border-2 transition-all",
-                            status === "completed" ? "bg-indigo-600 border-indigo-600 text-white" :
-                            status === "available" ? "bg-white dark:bg-surface-800 border-indigo-500 text-indigo-600 dark:text-indigo-400 animate-pulse-glow" :
+                            status === "completed" ? `${accentBg} text-white` :
+                            status === "available" ? `bg-white dark:bg-surface-800 ${accentRing}` :
                             "bg-slate-100 dark:bg-surface-700 border-slate-300 dark:border-surface-600 text-slate-400"
                           )}>
                             {status === "completed" ? "✓" : lessonIdx + 1}
                           </div>
                           {lessonIdx < mod.lessons.length - 1 && (
-                            <div className={cn("w-0.5 h-4 mt-0.5", status === "completed" ? "bg-indigo-400" : "bg-slate-200 dark:bg-surface-600")} />
+                            <div className={cn("w-0.5 h-4 mt-0.5", status === "completed" ? accentLine : "bg-slate-200 dark:bg-surface-600")} />
                           )}
                         </div>
 
@@ -117,7 +128,8 @@ export default async function TrilhaPage() {
             );
           })}
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

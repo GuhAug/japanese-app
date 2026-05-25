@@ -78,7 +78,8 @@ export async function POST(req: NextRequest) {
   if (progress.status !== "completed") {
     const srsOps = lesson.srsItemIds.map((itemId) => {
       const itemType = itemId.startsWith("hira-") ? "hiragana"
-        : itemId.startsWith("kata-") ? "katakana" : "vocab";
+        : itemId.startsWith("kata-") ? "katakana"
+        : itemId.startsWith("kor-") ? "korean" : "vocab";
       return prisma.sRSItem.upsert({
         where: { userId_itemId: { userId, itemId } },
         create: { userId, itemId, itemType, dueDate: getDueDate(1) },
@@ -148,6 +149,22 @@ export async function POST(req: NextRequest) {
   // Check katakana
   const kataProgress = await prisma.moduleProgress.findFirst({ where: { userId, moduleId: "b1-m3" } });
   if (kataProgress?.examPassed) await awardBadge("katakana-master");
+
+  // Check hangul hero (Korean vowels + consonants)
+  const hangulModules = ["b2-m1", "b2-m2"];
+  const hangulProgress = await prisma.moduleProgress.findMany({
+    where: { userId, moduleId: { in: hangulModules } },
+  });
+  if (hangulProgress.filter((m) => m.examPassed).length === 2) await awardBadge("hangul-hero");
+
+  // Check polyglot (at least 1 completed lesson in each language)
+  const jaLessons = await prisma.lessonProgress.count({
+    where: { userId, status: "completed", lessonId: { startsWith: "b1-" } },
+  });
+  const korLessons = await prisma.lessonProgress.count({
+    where: { userId, status: "completed", lessonId: { startsWith: "b2-" } },
+  });
+  if (jaLessons >= 1 && korLessons >= 1) await awardBadge("polyglot");
 
   return NextResponse.json({
     success: true,

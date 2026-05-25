@@ -1,0 +1,240 @@
+import { Module } from "@/types/curriculum";
+
+export const koreanPhrasesModule: Module = {
+  id: "b2-m3",
+  blockId: "b2",
+  title: "Primeiras Palavras e Frases",
+  description: "Saudações, expressões essenciais e números em coreano",
+  passThreshold: 0.7,
+  lessons: [
+    {
+      id: "b2-m3-l1",
+      moduleId: "b2-m3",
+      blockId: "b2",
+      title: "Saudações Coreanas",
+      subtitle: "안녕하세요, 감사합니다...",
+      estimatedMinutes: 10,
+      srsItemIds: ["kor-annyeong","kor-gamsahamnida","kor-joesonghamnida","kor-gwaenchanayo","kor-ne","kor-aniyo"],
+      xpReward: 20,
+      theorySlides: [
+        {
+          type: "table",
+          title: "Saudações do Dia a Dia",
+          content: "As saudações coreanas variam de acordo com o nível de formalidade:",
+          rows: [
+            { character: "안녕하세요", romaji: "Annyeonghaseyo", mnemonic: "Olá / Bom dia / Boa tarde (formal)" },
+            { character: "안녕", romaji: "Annyeong", mnemonic: "Oi / Tchau (informal, com amigos)" },
+            { character: "안녕히 가세요", romaji: "Annyeonghi gaseyo", mnemonic: "Tchau (para quem vai embora)" },
+            { character: "안녕히 계세요", romaji: "Annyeonghi gyeseyo", mnemonic: "Tchau (para quem fica)" },
+            { character: "감사합니다", romaji: "Gamsahamnida", mnemonic: "Obrigado(a) (muito formal)" },
+            { character: "고마워요", romaji: "Gomawoyo", mnemonic: "Obrigado(a) (informal)" },
+            { character: "죄송합니다", romaji: "Joesonghamnida", mnemonic: "Desculpe (formal)" },
+            { character: "괜찮아요", romaji: "Gwaenchanayo", mnemonic: "Está tudo bem / Não tem problema" },
+            { character: "네", romaji: "Ne", mnemonic: "Sim" },
+            { character: "아니요", romaji: "Aniyo", mnemonic: "Não" },
+          ],
+        },
+        {
+          type: "explanation",
+          title: "Formalidade no Coreano",
+          content:
+            "O coreano tem vários níveis de formalidade. Para começar, focamos no nível educado (존댓말, jondaemal) — apropriado para desconhecidos e situações formais.\n\nO sufixo -요 no final torna as frases educadas mas não excessivamente formais. -합니다 é ainda mais formal, usado em contextos profissionais e noticiários.",
+          tip: "Sempre use 안녕하세요 ao conhecer alguém — é o nível certo para a maioria das situações do dia a dia!",
+        },
+      ],
+      exercises: [
+        { id: "b2m3l1-e1", type: "flashcard", prompt: "안녕하세요", answer: "Annyeonghaseyo (Olá)", xpReward: 5 },
+        { id: "b2m3l1-e2", type: "flashcard", prompt: "감사합니다", answer: "Gamsahamnida (Obrigado)", xpReward: 5 },
+        { id: "b2m3l1-e3", type: "flashcard", prompt: "죄송합니다", answer: "Joesonghamnida (Desculpe)", xpReward: 5 },
+        { id: "b2m3l1-e4", type: "flashcard", prompt: "괜찮아요", answer: "Gwaenchanayo (Tudo bem)", xpReward: 5 },
+        {
+          id: "b2m3l1-e5", type: "multiple-choice", prompt: "Como se diz 'Obrigado' formalmente?", answer: "감사합니다",
+          options: ["감사합니다", "안녕하세요", "괜찮아요", "아니요"], xpReward: 5,
+        },
+        {
+          id: "b2m3l1-e6", type: "multiple-choice", prompt: "네 significa:", answer: "Sim",
+          options: ["Não", "Sim", "Olá", "Tchau"], xpReward: 5,
+        },
+        {
+          id: "b2m3l1-e7", type: "multiple-choice", prompt: "아니요 significa:", answer: "Não",
+          options: ["Sim", "Não", "Obrigado", "Desculpe"], xpReward: 5,
+        },
+        {
+          id: "b2m3l1-e8", type: "multiple-choice", prompt: "'Annyeonghaseyo' em Hangul é:", answer: "안녕하세요",
+          options: ["안녕하세요", "감사합니다", "괜찮아요", "고마워요"], xpReward: 5,
+        },
+        {
+          id: "b2m3l1-e9", type: "multiple-choice", prompt: "Para dizer tchau a quem vai embora, usa-se:", answer: "안녕히 가세요",
+          options: ["안녕히 계세요", "안녕히 가세요", "안녕", "감사합니다"], xpReward: 5,
+        },
+        {
+          id: "b2m3l1-e10", type: "multiple-choice", prompt: "고마워요 é a versão ___ de 감사합니다:", answer: "informal",
+          options: ["mais formal", "informal", "idêntica", "mais antiga"], xpReward: 5,
+        },
+      ],
+    },
+    {
+      id: "b2-m3-l2",
+      moduleId: "b2-m3",
+      blockId: "b2",
+      title: "Expressões Essenciais",
+      subtitle: "이름이 뭐예요? 어디예요?...",
+      estimatedMinutes: 12,
+      srsItemIds: ["kor-ireumi","kor-jeoneun","kor-eodiyeyo","kor-eolmayeyo","kor-juseyo","kor-mollayo"],
+      xpReward: 20,
+      theorySlides: [
+        {
+          type: "table",
+          title: "Frases Práticas Essenciais",
+          content: "Frases para se apresentar e navegar situações cotidianas:",
+          rows: [
+            { character: "이름이 뭐예요?", romaji: "Ireumi mwoyeyo?", mnemonic: "Qual é o seu nome?" },
+            { character: "저는 [이름]이에요", romaji: "Jeoneun [nome]ieyo", mnemonic: "Eu sou [nome]" },
+            { character: "반갑습니다", romaji: "Bangapseumnida", mnemonic: "Prazer em conhecê-lo" },
+            { character: "어디예요?", romaji: "Eodiyeyo?", mnemonic: "Onde é? / Onde está?" },
+            { character: "얼마예요?", romaji: "Eolmayeyo?", mnemonic: "Quanto custa?" },
+            { character: "주세요", romaji: "Juseyo", mnemonic: "Por favor (ao pedir algo)" },
+            { character: "모르겠어요", romaji: "Moreugesseoyo", mnemonic: "Não sei" },
+            { character: "알겠어요", romaji: "Algeseoyo", mnemonic: "Entendi" },
+            { character: "잠깐만요", romaji: "Jamkkanmanyo", mnemonic: "Um momento, por favor" },
+            { character: "천천히 말해주세요", romaji: "Cheoncheonhi malhaejuseyo", mnemonic: "Fale mais devagar, por favor" },
+          ],
+        },
+        {
+          type: "explanation",
+          title: "Apresentando-se em Coreano",
+          content:
+            "Para se apresentar:\n저는 [nome]이에요 / 예요 (Jeoneun [nome]ieyo/yeyo)\n\n• Use -이에요 quando o nome termina em consoante: 저는 Tom이에요\n• Use -예요 quando o nome termina em vogal: 저는 Ana예요\n\n저는 (jeoneun) = eu (formal)\n나는 (naneun) = eu (informal)",
+          tip: "주세요 (juseyo) é extremamente útil — ao apontar para algo num restaurante, basta dizer '이거 주세요' (igeo juseyo) = 'este aqui, por favor'.",
+        },
+      ],
+      exercises: [
+        { id: "b2m3l2-e1", type: "flashcard", prompt: "이름이 뭐예요?", answer: "Ireumi mwoyeyo? (Qual é o seu nome?)", xpReward: 5 },
+        { id: "b2m3l2-e2", type: "flashcard", prompt: "반갑습니다", answer: "Bangapseumnida (Prazer em conhecê-lo)", xpReward: 5 },
+        { id: "b2m3l2-e3", type: "flashcard", prompt: "주세요", answer: "Juseyo (Por favor)", xpReward: 5 },
+        {
+          id: "b2m3l2-e4", type: "multiple-choice", prompt: "얼마예요? significa:", answer: "Quanto custa?",
+          options: ["Onde é?", "Quanto custa?", "Qual é o nome?", "Prazer em conhecer"], xpReward: 5,
+        },
+        {
+          id: "b2m3l2-e5", type: "multiple-choice", prompt: "저는 Ana___ (nome termina em vogal):", answer: "예요",
+          options: ["이에요", "예요", "입니다", "에요"], xpReward: 5,
+        },
+        {
+          id: "b2m3l2-e6", type: "multiple-choice", prompt: "알겠어요 significa:", answer: "Entendi",
+          options: ["Não sei", "Entendi", "Por favor", "Um momento"], xpReward: 5,
+        },
+        {
+          id: "b2m3l2-e7", type: "multiple-choice", prompt: "Para pedir algo apontando, diz-se:", answer: "이거 주세요",
+          options: ["이거 주세요", "얼마예요?", "모르겠어요", "어디예요?"], xpReward: 5,
+        },
+        {
+          id: "b2m3l2-e8", type: "multiple-choice", prompt: "'Fale mais devagar' em coreano:", answer: "천천히 말해주세요",
+          options: ["잠깐만요", "천천히 말해주세요", "알겠어요", "반갑습니다"], xpReward: 5,
+        },
+        {
+          id: "b2m3l2-e9", type: "multiple-choice", prompt: "어디예요? significa:", answer: "Onde é?",
+          options: ["Quanto custa?", "Onde é?", "O que é?", "Quando é?"], xpReward: 5,
+        },
+        {
+          id: "b2m3l2-e10", type: "multiple-choice", prompt: "잠깐만요 significa:", answer: "Um momento",
+          options: ["Entendi", "Não sei", "Um momento", "Por favor"], xpReward: 5,
+        },
+      ],
+    },
+    {
+      id: "b2-m3-l3",
+      moduleId: "b2-m3",
+      blockId: "b2",
+      title: "Números de 1 a 10",
+      subtitle: "하나 둘 셋 넷 다섯...",
+      estimatedMinutes: 12,
+      srsItemIds: ["kor-num1","kor-num2","kor-num3","kor-num4","kor-num5","kor-num6","kor-num7","kor-num8","kor-num9","kor-num10"],
+      xpReward: 20,
+      theorySlides: [
+        {
+          type: "explanation",
+          title: "Dois Sistemas de Numerais",
+          content:
+            "O coreano tem DOIS sistemas de numerais:\n\n1. Numerais Nativos (고유어, goyueo): hana, dul, set... — usados para contar objetos, idades e horas\n2. Numerais Sino-coreanos (한자어, hanjayeo): il, i, sam... — usados para datas, dinheiro, minutos e números de telefone\n\nVamos aprender os dois sistemas de 1 a 10!",
+          tip: "Para compras e dinheiro → use sino-coreano (il, i, sam...). Para pedir N porções num restaurante → use o nativo (hana, dul, set...).",
+        },
+        {
+          type: "table",
+          title: "Numerais Nativos (고유어) — 1 a 10",
+          content: "Os numerais nativos são usados para contar objetos, expressar idades e horas:",
+          rows: [
+            { character: "하나 (한)", romaji: "hana (han)", mnemonic: "1 — use '한' antes de substantivo" },
+            { character: "둘 (두)", romaji: "dul (du)", mnemonic: "2 — use '두' antes de substantivo" },
+            { character: "셋 (세)", romaji: "set (se)", mnemonic: "3 — use '세' antes de substantivo" },
+            { character: "넷 (네)", romaji: "net (ne)", mnemonic: "4 — use '네' antes de substantivo" },
+            { character: "다섯", romaji: "daseot", mnemonic: "5" },
+            { character: "여섯", romaji: "yeoseot", mnemonic: "6" },
+            { character: "일곱", romaji: "ilgop", mnemonic: "7" },
+            { character: "여덟", romaji: "yeodeol", mnemonic: "8" },
+            { character: "아홉", romaji: "ahop", mnemonic: "9" },
+            { character: "열", romaji: "yeol", mnemonic: "10" },
+          ],
+        },
+        {
+          type: "table",
+          title: "Numerais Sino-Coreanos (한자어) — 1 a 10",
+          content: "Os numerais sino-coreanos são usados para dinheiro, datas e minutos:",
+          rows: [
+            { character: "일", romaji: "il", mnemonic: "1" },
+            { character: "이", romaji: "i", mnemonic: "2" },
+            { character: "삼", romaji: "sam", mnemonic: "3" },
+            { character: "사", romaji: "sa", mnemonic: "4" },
+            { character: "오", romaji: "o", mnemonic: "5" },
+            { character: "육", romaji: "yuk", mnemonic: "6" },
+            { character: "칠", romaji: "chil", mnemonic: "7" },
+            { character: "팔", romaji: "pal", mnemonic: "8" },
+            { character: "구", romaji: "gu", mnemonic: "9" },
+            { character: "십", romaji: "sip", mnemonic: "10" },
+          ],
+        },
+      ],
+      exercises: [
+        { id: "b2m3l3-e1", type: "flashcard", prompt: "하나", answer: "1 (hana)", xpReward: 5 },
+        { id: "b2m3l3-e2", type: "flashcard", prompt: "둘", answer: "2 (dul)", xpReward: 5 },
+        { id: "b2m3l3-e3", type: "flashcard", prompt: "셋", answer: "3 (set)", xpReward: 5 },
+        { id: "b2m3l3-e4", type: "flashcard", prompt: "열", answer: "10 (yeol)", xpReward: 5 },
+        { id: "b2m3l3-e5", type: "flashcard", prompt: "삼 (sino-coreano)", answer: "3 (sam)", xpReward: 5 },
+        {
+          id: "b2m3l3-e6", type: "multiple-choice", prompt: "Qual numeral nativo representa 5?", answer: "다섯",
+          options: ["다섯", "여섯", "넷", "일곱"], xpReward: 5,
+        },
+        {
+          id: "b2m3l3-e7", type: "multiple-choice", prompt: "Para dizer a hora, usa-se:", answer: "Numerais nativos",
+          options: ["Numerais nativos", "Numerais sino-coreanos", "Os dois", "Nenhum"], xpReward: 5,
+        },
+        {
+          id: "b2m3l3-e8", type: "multiple-choice", prompt: "O sino-coreano para 7 é:", answer: "칠",
+          options: ["일곱", "칠", "팔", "구"], xpReward: 5,
+        },
+        {
+          id: "b2m3l3-e9", type: "multiple-choice", prompt: "Para preços em lojas, usa-se:", answer: "Numerais sino-coreanos",
+          options: ["Numerais nativos", "Numerais sino-coreanos", "Qualquer um", "Inglês"], xpReward: 5,
+        },
+        {
+          id: "b2m3l3-e10", type: "multiple-choice", prompt: "여덟 representa:", answer: "8",
+          options: ["7", "8", "9", "10"], xpReward: 5,
+        },
+      ],
+    },
+  ],
+  examQuestions: [
+    { id: "b2m3-eq1", type: "multiple-choice", prompt: "Como se diz 'Olá' formalmente em coreano?", answer: "안녕하세요", options: ["안녕하세요","감사합니다","괜찮아요","아니요"] },
+    { id: "b2m3-eq2", type: "multiple-choice", prompt: "감사합니다 significa:", answer: "Obrigado", options: ["Olá","Obrigado","Desculpe","Sim"] },
+    { id: "b2m3-eq3", type: "multiple-choice", prompt: "얼마예요? significa:", answer: "Quanto custa?", options: ["Onde é?","Quanto custa?","Qual é o nome?","Entendi"] },
+    { id: "b2m3-eq4", type: "multiple-choice", prompt: "주세요 significa:", answer: "Por favor (ao pedir)", options: ["Obrigado","Desculpe","Por favor (ao pedir)","Tchau"] },
+    { id: "b2m3-eq5", type: "multiple-choice", prompt: "Numeral nativo para 5:", answer: "다섯", options: ["오","다섯","넷","여섯"] },
+    { id: "b2m3-eq6", type: "multiple-choice", prompt: "Sino-coreano para 7:", answer: "칠", options: ["일곱","칠","팔","육"] },
+    { id: "b2m3-eq7", type: "multiple-choice", prompt: "Para expressar a idade usa-se:", answer: "Numerais nativos", options: ["Numerais nativos","Numerais sino-coreanos","Ambos","Inglês"] },
+    { id: "b2m3-eq8", type: "multiple-choice", prompt: "'Entendi' em coreano:", answer: "알겠어요", options: ["모르겠어요","알겠어요","잠깐만요","괜찮아요"] },
+    { id: "b2m3-eq9", type: "multiple-choice", prompt: "아니요 significa:", answer: "Não", options: ["Sim","Não","Talvez","Entendi"] },
+    { id: "b2m3-eq10", type: "multiple-choice", prompt: "반갑습니다 significa:", answer: "Prazer em conhecê-lo", options: ["Obrigado","Desculpe","Prazer em conhecê-lo","Até logo"] },
+    { id: "b2m3-eq11", type: "multiple-choice", prompt: "열 (yeol) é o numeral nativo para:", answer: "10", options: ["8","9","10","7"] },
+    { id: "b2m3-eq12", type: "multiple-choice", prompt: "Para pedir algo apontando:", answer: "이거 주세요", options: ["얼마예요?","이거 주세요","어디예요?","알겠어요"] },
+  ],
+};

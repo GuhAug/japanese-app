@@ -64,13 +64,26 @@ export async function POST(req: NextRequest, { params }: { params: { moduleId: s
 
     // Check block1 graduate badge
     const block1ModuleIds = ["b1-m1", "b1-m2", "b1-m3", "b1-m4"];
-    const passedExams = await prisma.moduleProgress.count({
+    const passedBlock1 = await prisma.moduleProgress.count({
       where: { userId, moduleId: { in: block1ModuleIds }, examPassed: true },
     });
-    if (passedExams >= 4) {
+    if (passedBlock1 >= 4) {
       await prisma.userBadge.upsert({
         where: { userId_badgeId: { userId, badgeId: "block1-graduate" } },
         create: { userId, badgeId: "block1-graduate" },
+        update: {},
+      });
+    }
+
+    // Check block2 graduate badge
+    const block2ModuleIds = ["b2-m1", "b2-m2", "b2-m3"];
+    const passedBlock2 = await prisma.moduleProgress.count({
+      where: { userId, moduleId: { in: block2ModuleIds }, examPassed: true },
+    });
+    if (passedBlock2 >= 3) {
+      await prisma.userBadge.upsert({
+        where: { userId_badgeId: { userId, badgeId: "block2-graduate" } },
+        create: { userId, badgeId: "block2-graduate" },
         update: {},
       });
     }
